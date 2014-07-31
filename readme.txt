@@ -1,4 +1,4 @@
-=== WangGuard ===
+=== Link Shield ===
 Contributors: j.conti
 Author URI: http://wangguard.com
 Tags: linkshield, link shield, block links, hide links, Tasa Google, Google Tax, AEDE, Canon AEDE, CEDRO, buddypress, bbpress, WordPress Multisite
