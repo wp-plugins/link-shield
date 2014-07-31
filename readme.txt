@@ -1,0 +1,86 @@
+=== Link Shield ===
+Contributors: j.conti
+Author URI: http://wangguard.com
+Tags: linkshield, link shield, block links, hide links, Tasa Google, Google Tax, AEDE, Canon AEDE, CEDRO, buddypress, bbpress, WordPress Multisite
+Requires at least: 3.0
+Tested up to: 3.4
+Stable tag: 0.1.0
+License: GPLv2
+
+This plugin hide links to articles published by members of Spain's newspaper association with AEDE and CEDRO. Link Shield is a Must-have plugin
+
+
+== Description ==
+
+Attention: In a near future, we will add a lot of tools for manage any link to anywhere on your website.
+
+Recently Spain passed a law that taxes any site that links to articles published by members of Spain's newspaper association with association with AEDE and CEDRO.
+
+The law has been nicknamed the "Google Tax" because it specifically targets Google News, as well as other news aggregation systems.
+
+If you have links to that newspapers, a user add a link on your comments, on your BuddyPress or bbPress, you are a candidate for having to pay the tax. If you have links to that website, and you are not paying that tax, you can be fined from 3,000€ to 30,000€ for every link found on your website.
+
+This plugin hide links from all your post, comments, BuddyPress activity and bbPress forum to CEDRO and AEDE members.
+
+This plugin don't make database modifications, so is it is deactivated, all links appear again.
+
+On september, AEDE and CEDRO will start to look for backlinks to their associates, so now is the moment to install this plugins for remove the links from your website, community or forum.
+
+There are 86 important newspapers associated with AEDE and CEDRO, so is very easy that you have some links to the newspapers.
+
+You can learn about this on this sites:
+
+ - [IFA MAGAZINE](http://www.ifamagazine.com/news/spain-s-google-tax-could-kill-facebook-and-twitter-update-303398)
+ - [BUSSINESS INSIDER](http://www.businessinsider.com/spain-google-tax-2014-7)
+ - [TECHDIRT](https://www.techdirt.com/articles/20140728/06561628035/spain-likely-to-pass-google-tax-makes-paying-news-snippets-inalienable-right-new-bureaucracy-to-collect-it.shtml)
+ - [THE GUARDIAN](http://www.theguardian.com/media/greenslade/2014/jul/29/google-spain)
+ - [INTERNATIONAL BUSINESS TIMES](http://www.ibtimes.com/spains-google-tax-law-reaction-silicon-valleys-international-tax-evasion-1642112)
+ - [QUARTZ]( http://qz.com/241005/nobody-seems-quite-sure-how-spains-new-google-tax-will-work/)
+ - [THE SIDNEY MORNING HERALD]( http://www.smh.com.au/technology/technology-news/under-spains-google-fee-law-news-aggregators-must-pay-publishers-20140728-zxhv1.html)
+
+
+Features:
+--------
+
+ * Valid HTML
+ * I18n language translation support
+
+Requirements/Restrictions:
+-------------------------
+ * Works with Wordpress 2.0+, WPMU 2.0+, and BuddyPress 2.0+ (Wordpress 3.9.1+ is highly recommended)
+ * PHP 4.3 or above. (PHP 5+ is highly recommended)
+
+
+== Installation ==
+
+1. Upload the "link-shield folder to the "/wp-content/plugins/" directory, or download through the "Plugins" menu in WordPress
+
+2. Activate the plugin through the "Plugins" menu in WordPress
+
+3. Updates are automatic. Click on "Upgrade Automatically" if prompted from the admin menu. If you ever have to manually upgrade, simply deactivate, uninstall, and repeat the installation steps with the new version. 
+
+
+
+== Screenshots ==
+
+
+
+== Configuration ==
+
+No needed at this time
+
+== Usage ==
+
+Enable & Go
+
+
+
+== Frequently Asked Questions ==
+
+
+
+== Changelog ==
+
+= 0.1.0 =
+- (31 Jul 2014) Initial Release
+
