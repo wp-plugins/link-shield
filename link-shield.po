@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WangGuard\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-30 17:01+0100\n"
-"PO-Revision-Date: 2014-07-30 17:01+0100\n"
+"POT-Creation-Date: 2014-07-31 18:41+0100\n"
+"PO-Revision-Date: 2014-07-31 18:42+0100\n"
 "Last-Translator: José Conti <j.conti@joseconti.com>\n"
 "Language-Team: WangGuard <info@wangguard.com>\n"
 "Language: es_ES\n"
@@ -19,7 +19,23 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../link-shield.php:17
+#: ../link-shield.php:19
+msgid "You do not have sufficient permissions to access this page."
+msgstr ""
+
+#: ../link-shield.php:37
+msgid "settings saved."
+msgstr ""
+
+#: ../link-shield.php:47
+msgid "Links Shield"
+msgstr ""
+
+#: ../link-shield.php:55
+msgid "Text for hidden links:"
+msgstr ""
+
+#: ../link-shield.php:75
 msgid "link blocked thanks to AEDE Spanish tax"
 msgstr ""
 
@@ -249,9 +265,6 @@ msgstr ""
 #~ "La API key fue validada correctamente pero no se puede establecer una "
 #~ "conexión en estos momentos. Por favor, comprueba la configuración de tu "
 #~ "servidor."
-
-#~ msgid "Options saved."
-#~ msgstr "Opciones guardadas."
 
 #~ msgid "WangGuard Configuration"
 #~ msgstr "Configuración de WangGuard"
