@@ -3,7 +3,7 @@
 Plugin Name: Link shield
 Plugin URI: http://wangdev.com/
 Description: Replace the URL base of the communication media who are members of CEDRO and AEDE
-Version: 0.2.0
+Version: 0.3.0
 Author: José Conti
 Author URI: http://www.joseconti.com
 License: GPL2 or later

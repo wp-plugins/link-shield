@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WangGuard\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-31 18:41+0100\n"
-"PO-Revision-Date: 2014-07-31 18:42+0100\n"
+"POT-Creation-Date: 2014-08-01 01:52+0100\n"
+"PO-Revision-Date: 2014-08-01 01:53+0100\n"
 "Last-Translator: José Conti <j.conti@joseconti.com>\n"
 "Language-Team: WangGuard <info@wangguard.com>\n"
 "Language: es_ES\n"
@@ -19,24 +19,65 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../link-shield.php:19
+#: ../buddypress-link-shield.php:12 ../link-shield.php:122
+#: ../link-shield.php:142 ../link-shield.php:162
+msgid "link blocked thanks to AEDE Spanish tax"
+msgstr ""
+
+#: ../buddypress-link-shield.php:31
+msgid "Hide link text on BuddyPress?: "
+msgstr ""
+
+#: ../buddypress-link-shield.php:33 ../link-shield.php:81
+#: ../link-shield.php:87 ../link-shield.php:93
+msgid "Replace text with \"Text for hidden links\""
+msgstr ""
+
+#: ../buddypress-link-shield.php:34 ../link-shield.php:88
+#: ../link-shield.php:94
+msgid "Show link text"
+msgstr ""
+
+#: ../link-shield.php:28
 msgid "You do not have sufficient permissions to access this page."
 msgstr ""
 
-#: ../link-shield.php:37
+#: ../link-shield.php:57
 msgid "settings saved."
 msgstr ""
 
-#: ../link-shield.php:47
+#: ../link-shield.php:67
 msgid "Links Shield"
 msgstr ""
 
-#: ../link-shield.php:55
+#: ../link-shield.php:75
 msgid "Text for hidden links:"
 msgstr ""
 
-#: ../link-shield.php:75
-msgid "link blocked thanks to AEDE Spanish tax"
+#: ../link-shield.php:79
+msgid "Hide link text on Post?: "
+msgstr ""
+
+#: ../link-shield.php:85
+msgid "Hide link text on Comments?: "
+msgstr ""
+
+#: ../link-shield.php:91
+msgid "Hide link text on bbPress?: "
+msgstr ""
+
+#: ../link-shield.php:99
+msgid "Shordcode for hide text/links:"
+msgstr ""
+
+#: ../link-shield.php:101
+msgid ""
+"Use this Shordcode for hide links, text, text block, vides, etc to non "
+"logedin users"
+msgstr ""
+
+#: ../link-shield.php:186
+msgid "Debes identificarte para ver este contenido"
 msgstr ""
 
 #~ msgid ""
