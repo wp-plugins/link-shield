@@ -28,11 +28,13 @@ add_filter('bp_get_activity_content_body', 'link_shield_look_for_bl_domains_budd
 	
 	function link_shield_fields_buddypress(){ ?>
 		
-		<p><?php _e("Hide link text on BuddyPress?: ", 'link-shield' ); ?>
-		<select name="link_shield_buddypress_show_link_text_field" id="link_shield_buddypress_show_link_text_field">
+		<tr>
+			<th scope="row"><label><?php _e("Hide link text on BuddyPress?: ", 'link-shield' ); ?></label></th>
+			<td><select name="link_shield_buddypress_show_link_text_field" id="link_shield_buddypress_show_link_text_field">
 			<option value="0" <?php if (  ( get_site_option ('link_shield_buddypress_show_link_text') == 0 ) || ! get_site_option ('link_shield_buddypress_show_link_text') ) echo 'selected="selected"'; ?> ><?php _e('Replace text with "Text for hidden links"','link-shield'); ?></option>
 			<option value="1" <?php if ( get_site_option ('link_shield_buddypress_show_link_text') == 1 ) echo 'selected="selected"'; ?>><?php _e('Show link text','link-shield'); ?></option>
-		</select></p><hr />
+		</select></td>
+		</tr>
 	<?php }
 	add_action('link_shield_fields_options_block','link_shield_fields_buddypress');
 	

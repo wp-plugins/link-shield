@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WangGuard\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-01 01:50+0100\n"
-"PO-Revision-Date: 2014-08-01 01:52+0100\n"
+"POT-Creation-Date: 2014-08-02 01:55+0100\n"
+"PO-Revision-Date: 2014-08-02 02:01+0100\n"
 "Last-Translator: José Conti <j.conti@joseconti.com>\n"
 "Language-Team: WangGuard <info@wangguard.com>\n"
 "Language: es_ES\n"
@@ -19,22 +19,22 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../buddypress-link-shield.php:12 ../link-shield.php:122
-#: ../link-shield.php:142 ../link-shield.php:162
+#: ../buddypress-link-shield.php:12 ../link-shield.php:129
+#: ../link-shield.php:149 ../link-shield.php:169
 msgid "link blocked thanks to AEDE Spanish tax"
 msgstr "Enlace bloqueado por la Tasa española AEDE"
 
-#: ../buddypress-link-shield.php:31
+#: ../buddypress-link-shield.php:32
 msgid "Hide link text on BuddyPress?: "
 msgstr "¿Esconde enlaces en BuddyPress?"
 
-#: ../buddypress-link-shield.php:33 ../link-shield.php:81
-#: ../link-shield.php:87 ../link-shield.php:93
+#: ../buddypress-link-shield.php:34 ../link-shield.php:75
+#: ../link-shield.php:83 ../link-shield.php:91
 msgid "Replace text with \"Text for hidden links\""
 msgstr "Reemplazar los textos con \"Textos para los enlaces ocultos\""
 
-#: ../buddypress-link-shield.php:34 ../link-shield.php:88
-#: ../link-shield.php:94
+#: ../buddypress-link-shield.php:35 ../link-shield.php:76
+#: ../link-shield.php:84 ../link-shield.php:92
 msgid "Show link text"
 msgstr "Mostrar texto de los enlaces"
 
@@ -42,27 +42,27 @@ msgstr "Mostrar texto de los enlaces"
 msgid "You do not have sufficient permissions to access this page."
 msgstr "No tienes suficientes permisos para acceder a esta página"
 
-#: ../link-shield.php:57
+#: ../link-shield.php:58
 msgid "settings saved."
 msgstr "Opciones guardadas."
 
-#: ../link-shield.php:67
+#: ../link-shield.php:64
 msgid "Links Shield"
 msgstr "Link Shield"
 
-#: ../link-shield.php:75
+#: ../link-shield.php:68
 msgid "Text for hidden links:"
 msgstr "Texto para los enlaces ocultos:"
 
-#: ../link-shield.php:79
+#: ../link-shield.php:73
 msgid "Hide link text on Post?: "
 msgstr "¿Esconder enlaces en las entradas?"
 
-#: ../link-shield.php:85
+#: ../link-shield.php:81
 msgid "Hide link text on Comments?: "
 msgstr "¿Esconder enlaces en los comentarios?"
 
-#: ../link-shield.php:91
+#: ../link-shield.php:89
 msgid "Hide link text on bbPress?: "
 msgstr "¿Esconder enlaces en bbPress?"
 
@@ -78,7 +78,43 @@ msgstr ""
 "Usa este Shordcode para esconder texto, bloques de texto, video, etc a los "
 "usuarios no identificados"
 
-#: ../link-shield.php:186
+#: ../link-shield.php:105
+msgid "Add rel='nofollow' to comments reply link:"
+msgstr "Añadir rel='nofollow' al enlace responder en los comentarios:"
+
+#: ../link-shield.php:106
+msgid ""
+" The reply link will include the comment ID in the URL and will send you "
+"back to the page with the comment form in place to make your reply to the "
+"comment."
+msgstr ""
+"El enlace responder incluye el ID del comentario en la URL y te devuelve a "
+"la misma página a la altura del formulario para realizar la respuesta al "
+"comentario."
+
+#: ../link-shield.php:107
+msgid ""
+"The problem is that search engines can follow this link on your page and "
+"will index the page the links goes to. This page is the same as the current "
+"page but will have additional query string options to take to back to the "
+"comment form. These URLs are then indexed in the search engines creating "
+"duplicate context in the search engine index."
+msgstr ""
+"El problema es que los buscadores pueden llegar a seguir este enlace en tu "
+"página y la indexarán. Esta página es exactamente la misma pero tienen "
+"parámetros adicionales en la url. Estas URLs pueden ser indexadas por los "
+"buscadores provocando contenido duplicado."
+
+#: ../link-shield.php:108
+msgid ""
+"A good way to solve this problem is to add a rel=\"nofollow\" to all your "
+"comment reply links, which tells search engines not to follow this link."
+msgstr ""
+"Una buena manera de solventar este problema es añadiendo rel=\"nofollow\" a "
+"todos los enlaces responder de los comentarios. Esto dice a los buscadores "
+"que no sigan el enlace."
+
+#: ../link-shield.php:193
 msgid "Debes identificarte para ver este contenido"
 msgstr "Debes identificarte para ver el contenido"
 
