@@ -3,8 +3,8 @@ Contributors: j.conti
 Author URI: http://wangguard.com
 Tags: linkshield, link shield, block links, hide links, Tasa Google, Google Tax, AEDE, Canon AEDE, CEDRO, buddypress, bbpress, WordPress Multisite, hide text, hide block text, hide videos
 Requires at least: 3.0
-Tested up to: 3.4
-Stable tag: 0.4.0
+Tested up to: 4,0
+Stable tag: 0.4.1
 License: GPLv2
 
 This plugin hide links to articles published by members of Spain's newspaper association with AEDE and CEDRO. Link Shield is a Must-have plugin
@@ -78,6 +78,9 @@ If you want, you can customize the hidden link text.
 
 
 == Changelog ==
+
+= 0.4.1 - 3 Aug 2014 =
+- Added Link Shield options remove when Link Shield is removed from WordPress Plugins.
 
 = 0.4.0 - 2 Aug 2014 =
 - Added ability to add rel='nofollow' to reply comments link.
