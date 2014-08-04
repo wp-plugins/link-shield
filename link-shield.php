@@ -120,8 +120,11 @@
  
 }
 	add_filter('the_content', 'link_shield_look_for_bl_domains');
+	add_filter('the_excerpt', 'link_shield_look_for_bl_domains');
+	add_filter('the_content_feed', 'link_shield_look_for_bl_domains_comments');
 	add_filter('comment_text', 'link_shield_look_for_bl_domains_comments');
 	add_filter('comments_number', 'link_shield_look_for_bl_domains_comments');
+	add_filter('get_comment_text', 'link_shield_look_for_bl_domains_comments');
 
 	// Hide links on Blog post
 	function link_shield_look_for_bl_domains($text){
@@ -130,13 +133,15 @@
 		
 			//print_r($GLOBALS['aede_domains']);
 			foreach ($GLOBALS['aede_domains'] as $blacklisteddomain) {
-				$searchword = "/".$blacklisteddomain."/i";
-					preg_match_all($searchword, $text, $found);
+				$searchword = '~\b'.'(http\:\/\/www\.|http\:\/\/)'.$blacklisteddomain.'\b~';
+					preg_match_all($searchword, $low_domain, $found);
 						foreach ($found[0] as $pattern) {
 							if ( get_site_option ('link_shield_blog_show_link_text') == 1){
 								$text = preg_replace('|<a (.+?)'.$pattern.'(.+?)>(.+?)</a>|i', '$3', $text);
+								$text = preg_replace('|'.$pattern.'(.+?)|i', '$3', $text);
 								} else {
 									$text = preg_replace('|<a (.+?)'.$pattern.'(.+?)>(.+?)</a>|i', '[' .$link_shield_text. ']', $text);
+									$text = preg_replace('|'.$pattern.'(.+?)|i', '[' .$link_shield_text. ']', $text);
 								}
 							//print_r($found[0]);
 						}
@@ -150,13 +155,15 @@
 		
 			//print_r($GLOBALS['aede_domains']);
 			foreach ($GLOBALS['aede_domains'] as $blacklisteddomain) {
-				$searchword = "/".$blacklisteddomain."/i";
-					preg_match_all($searchword, $text, $found);
+				$searchword = '~\b'.'(http\:\/\/www\.|http\:\/\/)'.$blacklisteddomain.'\b~';
+					preg_match_all($searchword, $low_domain, $found);
 						foreach ($found[0] as $pattern) {
 							if ( get_site_option ('link_shield_blog_comments_show_link_text') == 1){
 								$text = preg_replace('|<a (.+?)'.$pattern.'(.+?)>(.+?)</a>|i', '$3', $text);
+								$text = preg_replace('|'.$pattern.'(.+?)|i', '$3', $text);
 								} else {
 									$text = preg_replace('|<a (.+?)'.$pattern.'(.+?)>(.+?)</a>|i', '[' .$link_shield_text. ']', $text);
+									$text = preg_replace('|'.$pattern.'(.+?)|i', '[' .$link_shield_text. ']', $text);
 								}
 							//print_r($found[0]);
 						}
@@ -170,13 +177,15 @@
 		
 			//print_r($GLOBALS['aede_domains']);
 			foreach ($GLOBALS['aede_domains'] as $blacklisteddomain) {
-				$searchword = "/".$blacklisteddomain."/i";
-					preg_match_all($searchword, $text, $found);
+				$searchword = '~\b'.'(http\:\/\/www\.|http\:\/\/)'.$blacklisteddomain.'\b~';
+					preg_match_all($searchword, $low_domain, $found);
 						foreach ($found[0] as $pattern) {
 							if ( get_site_option ('link_shield_bbpress_show_link_text') == 1){
 								$text = preg_replace('|<a (.+?)'.$pattern.'(.+?)>(.+?)</a>|i', '$3', $text);
+								$text = preg_replace('|'.$pattern.'(.+?)|i', '$3', $text);
 								} else {
 									$text = preg_replace('|<a (.+?)'.$pattern.'(.+?)>(.+?)</a>|i', '[' .$link_shield_text. ']', $text);
+									$text = preg_replace('|'.$pattern.'(.+?)|i', '[' .$link_shield_text. ']', $text);
 								}
 							//print_r($found[0]);
 						}
@@ -190,7 +199,7 @@
 		if (is_user_logged_in()) {
 			return $content;
 			} else {
-				return __('Debes identificarte para ver este contenido','');
+				return __('You need to login for see this content','');
 				}
 			}
 

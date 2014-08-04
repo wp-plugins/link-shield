@@ -5,6 +5,10 @@
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 add_filter('bp_get_activity_content_body', 'link_shield_look_for_bl_domains_buddypress');
+add_filter( 'bp_get_group_name', 'link_shield_look_for_bl_domains_buddypress' );
+add_filter( 'bp_get_group_description', 'link_shield_look_for_bl_domains_buddypress' );
+add_filter( 'bp_get_activities_title', 'link_shield_look_for_bl_domains_buddypress' );
+add_filter( 'bp_activity_comment_content', 'link_shield_look_for_bl_domains_buddypress' );
 
 // Hide links on BuddyPress
 	function link_shield_look_for_bl_domains_buddypress($text){
@@ -13,13 +17,14 @@ add_filter('bp_get_activity_content_body', 'link_shield_look_for_bl_domains_budd
 		
 			//print_r($GLOBALS['aede_domains']);
 			foreach ($GLOBALS['aede_domains'] as $blacklisteddomain) {
-				$searchword = "/".$blacklisteddomain."/i";
-					preg_match_all($searchword, $text, $found);
+				$searchword = '~\b'.'(http\:\/\/www\.|http\:\/\/)'.$blacklisteddomain.'\b~';
+					preg_match_all($searchword, $low_domain, $found);
 						foreach ($found[0] as $pattern) {
 							if ( get_site_option ('link_shield_buddypress_show_link_text') == 1){
 								$text = preg_replace('|<a (.+?)'.$pattern.'(.+?)>(.+?)</a>|i', '$3', $text);
 								} else {
 									$text = preg_replace('|<a (.+?)'.$pattern.'(.+?)>(.+?)</a>|i', '[' .$link_shield_text. ']', $text);
+									$text = preg_replace('|(.+?)'.$pattern.'(.+?)|i', '[' .$link_shield_text. ']', $text);
 								}
 							//print_r($found[0]);
 						}
