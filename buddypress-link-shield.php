@@ -17,7 +17,7 @@ add_filter( 'bp_activity_comment_content', 'link_shield_look_for_bl_domains_budd
 		
 			//print_r($GLOBALS['aede_domains']);
 			foreach ($GLOBALS['aede_domains'] as $blacklisteddomain) {
-				$searchword = '~\b'.'(http\:\/\/www\.|http\:\/\/)'.$blacklisteddomain.'\b~';
+				$searchword = '~\b'.'(http\:\/\/(.+?)\.|http\:\/\/)'.$blacklisteddomain.'\b~';
 					preg_match_all($searchword, $low_domain, $found);
 						foreach ($found[0] as $pattern) {
 							if ( get_site_option ('link_shield_buddypress_show_link_text') == 1){

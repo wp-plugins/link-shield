@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WangGuard\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-02 01:55+0100\n"
-"PO-Revision-Date: 2014-08-02 02:01+0100\n"
+"POT-Creation-Date: 2014-08-04 22:49+0100\n"
+"PO-Revision-Date: 2014-08-04 22:50+0100\n"
 "Last-Translator: José Conti <j.conti@joseconti.com>\n"
 "Language-Team: WangGuard <info@wangguard.com>\n"
 "Language: es_ES\n"
@@ -19,21 +19,21 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../buddypress-link-shield.php:12 ../link-shield.php:129
-#: ../link-shield.php:149 ../link-shield.php:169
+#: ../buddypress-link-shield.php:16 ../link-shield.php:132
+#: ../link-shield.php:154 ../link-shield.php:176
 msgid "link blocked thanks to AEDE Spanish tax"
 msgstr "Enlace bloqueado por la Tasa española AEDE"
 
-#: ../buddypress-link-shield.php:32
+#: ../buddypress-link-shield.php:37
 msgid "Hide link text on BuddyPress?: "
 msgstr "¿Esconde enlaces en BuddyPress?"
 
-#: ../buddypress-link-shield.php:34 ../link-shield.php:75
+#: ../buddypress-link-shield.php:39 ../link-shield.php:75
 #: ../link-shield.php:83 ../link-shield.php:91
 msgid "Replace text with \"Text for hidden links\""
 msgstr "Reemplazar los textos con \"Textos para los enlaces ocultos\""
 
-#: ../buddypress-link-shield.php:35 ../link-shield.php:76
+#: ../buddypress-link-shield.php:40 ../link-shield.php:76
 #: ../link-shield.php:84 ../link-shield.php:92
 msgid "Show link text"
 msgstr "Mostrar texto de los enlaces"
@@ -114,9 +114,12 @@ msgstr ""
 "todos los enlaces responder de los comentarios. Esto dice a los buscadores "
 "que no sigan el enlace."
 
-#: ../link-shield.php:193
-msgid "Debes identificarte para ver este contenido"
-msgstr "Debes identificarte para ver el contenido"
+#: ../link-shield.php:202
+msgid "You need to login for see this content"
+msgstr "Necesitas identificarte para ver el contenido"
+
+#~ msgid "Debes identificarte para ver este contenido"
+#~ msgstr "Debes identificarte para ver el contenido"
 
 #~ msgid ""
 #~ "<strong>ERROR</strong>: The answer to the security question is invalid."
