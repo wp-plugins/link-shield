@@ -4,36 +4,36 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WangGuard\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-04 22:50+0100\n"
-"PO-Revision-Date: 2014-08-04 22:51+0100\n"
-"Last-Translator: José Conti <j.conti@joseconti.com>\n"
+"POT-Creation-Date: 2015-03-22 00:51+0100\n"
+"PO-Revision-Date: 2015-03-22 00:51+0100\n"
+"Last-Translator: José Conti <admin@wangguard.com>\n"
 "Language-Team: WangGuard <info@wangguard.com>\n"
 "Language: es_ES\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 1.6.5\n"
+"X-Generator: Poedit 1.7.5\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-KeywordsList: _;gettext;gettext_noop;__;_e;_n\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: ..\n"
 
 #: ../buddypress-link-shield.php:16 ../link-shield.php:132
-#: ../link-shield.php:154 ../link-shield.php:176
+#: ../link-shield.php:152 ../link-shield.php:172
 msgid "link blocked thanks to AEDE Spanish tax"
 msgstr ""
 
-#: ../buddypress-link-shield.php:37
+#: ../buddypress-link-shield.php:36
 msgid "Hide link text on BuddyPress?: "
 msgstr ""
 
-#: ../buddypress-link-shield.php:39 ../link-shield.php:75
+#: ../buddypress-link-shield.php:38 ../link-shield.php:75
 #: ../link-shield.php:83 ../link-shield.php:91
 msgid "Replace text with \"Text for hidden links\""
 msgstr ""
 
-#: ../buddypress-link-shield.php:40 ../link-shield.php:76
+#: ../buddypress-link-shield.php:39 ../link-shield.php:76
 #: ../link-shield.php:84 ../link-shield.php:92
 msgid "Show link text"
 msgstr ""
@@ -102,6 +102,6 @@ msgid ""
 "comment reply links, which tells search engines not to follow this link."
 msgstr ""
 
-#: ../link-shield.php:202
+#: ../link-shield.php:195
 msgid "You need to login for see this content"
 msgstr ""

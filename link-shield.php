@@ -2,7 +2,7 @@
 // Commond functions
 
 	if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
-	
+
 	// Add Link Shield Menu
 
 	if (is_multisite() ) {
@@ -10,25 +10,25 @@
 	} else {
 		add_action('admin_menu', 'link_shield_menu');
 	}
-	
+
 	function link_shield_menu() {
 		add_options_page( 'Link Shield Options', 'Link Shield', 'manage_options', 'link_shield_menu_options', 'link_shield_menu_options' );
 	}
-	
+
 	function link_shield_network_menu() {
 		add_submenu_page('settings.php', 'Link Shield Options', 'Link Shield', 'manage_options', 'link_shield_menu_options', 'link_shield_menu_options');
 		}
-	
-	
+
+
 	// mt_settings_page() displays the page content for the Test settings submenu
 	function link_shield_menu_options() {
 
-    	//must check that the user has the required capability 
+    	//must check that the user has the required capability
 		if (!current_user_can('manage_options')){
 			wp_die( __('You do not have sufficient permissions to access this page.') );
 		}
 
-    // variables for the field and option names 
+    // variables for the field and option names
    // $link_shield_text = 'link_shield_text';
    // $link_shield_text_field = 'link_shield_text';
 
@@ -49,9 +49,9 @@
         update_site_option( 'link_shield_blog_comments_show_link_text', $opt_link_shield_blog_comments_show_link_text );
         update_site_option( 'link_shield_bbpress_show_link_text', $opt_link_shield_bbpress_show_link_text );
         update_site_option(	'link_shield_add_nofollow_to_comments_links', @$_POST['link_shield_add_nofollow_to_comments_links']=='1' ? 1 : 0 );
-        
+
         do_action('link_shield_save_options');
-        
+
 
         // Put an settings updated message on the screen
 ?>
@@ -100,7 +100,7 @@
 				<td><input type="text" name="link_shield_shordcode_field" class="regular-text" value="<?php echo get_site_option( 'link_shield_shordcode' ); ?>"> <code><?php if (get_site_option( 'link_shield_shordcode' ) ) { echo '['. get_site_option( 'link_shield_shordcode' ).']Text to hide[/'. get_site_option( 'link_shield_shordcode' ).']'; } else { echo '[linkshield_hide]text to hide[/linkshield_hide]'; }?></code>
 <p class="description"><?php _e('Use this Shordcode for hide links, text, text block, vides, etc to non logedin users','link-shield'); ?></p></td>
 		</tr>
-		
+
 		<tr>
 			<th scope="row"><label><?php _e("Add rel='nofollow' to comments reply link:", 'link-shield' ); ?></label></th>
 			<td><label><input name="link_shield_add_nofollow_to_comments_links" type="checkbox" id="link_shield_add_nofollow_to_comments_links" value="1" <?php echo get_site_option('link_shield_add_nofollow_to_comments_links')=='1' ? 'checked' : ''?>><?php _e(' The reply link will include the comment ID in the URL and will send you back to the page with the comment form in place to make your reply to the comment.','link-shield'); ?><br />
@@ -108,7 +108,7 @@
 			<?php _e('A good way to solve this problem is to add a rel="nofollow" to all your comment reply links, which tells search engines not to follow this link.','link-shield');?></label></td>
 
 	<?php do_action('link_shield_fields'); ?>
-	
+
 </table>
 <p class="submit">
 <input type="submit" name="Submit" class="button-primary" value="<?php esc_attr_e('Save Changes') ?>" />
@@ -117,7 +117,7 @@
 </div>
 
 <?php
- 
+
 }
 	add_filter('the_content', 'link_shield_look_for_bl_domains');
 	add_filter('the_excerpt', 'link_shield_look_for_bl_domains');
@@ -130,68 +130,61 @@
 	function link_shield_look_for_bl_domains($text){
 		$low_domain = strtolower($text);
 		if (!get_site_option( 'link_shield_text' ) ) { $link_shield_text =  __('link blocked thanks to AEDE Spanish tax','link-shield'); } else { $link_shield_text = get_site_option( 'link_shield_text' ); }
-		
+
 			//print_r($GLOBALS['aede_domains']);
 			foreach ($GLOBALS['aede_domains'] as $blacklisteddomain) {
-				$searchword = '~\b'.'(http\:\/\/(.+?)\.|http\:\/\/)'.$blacklisteddomain.'\b~';
+				$searchword = '~\b'.$blacklisteddomain.'\b~';
 					preg_match_all($searchword, $low_domain, $found);
 						foreach ($found[0] as $pattern) {
 							if ( get_site_option ('link_shield_blog_show_link_text') == 1){
-								$text = preg_replace('|<a (.+?)'.$pattern.'(.+?)>(.+?)</a>|i', '$3', $text);
-								$text = preg_replace('|'.$pattern.'(.+?)|i', '$3', $text);
+								$text = preg_replace('/<a[^>]+?href="http:\/\/'.$pattern.'([\s\S]*?)[^>]*>([\s\S]*?)<\/a>/', '$2', $text);
 								} else {
-									$text = preg_replace('|<a (.+?)'.$pattern.'(.+?)>(.+?)</a>|i', '[' .$link_shield_text. ']', $text);
-									$text = preg_replace('|'.$pattern.'(.+?)|i', '[' .$link_shield_text. ']', $text);
+									$text = preg_replace('/<a[^>]+?href="http:\/\/'.$pattern.'([\s\S]*?)[^>]*>([\s\S]*?)<\/a>/', '[' .$link_shield_text. ']', $text);
+
 								}
-							//print_r($found[0]);
 						}
 					} return $text;
 	}
-	
+
 	// Hide links on Comments Blog post
 	function link_shield_look_for_bl_domains_comments($text){
 		$low_domain = strtolower($text);
 		if (!get_site_option( 'link_shield_text' ) ) { $link_shield_text =  __('link blocked thanks to AEDE Spanish tax','link-shield'); } else { $link_shield_text = get_site_option( 'link_shield_text' ); }
-		
+
 			//print_r($GLOBALS['aede_domains']);
 			foreach ($GLOBALS['aede_domains'] as $blacklisteddomain) {
-				$searchword = '~\b'.'(http\:\/\/(.+?)\.|http\:\/\/)'.$blacklisteddomain.'\b~';
+				$searchword = '~\b'.$blacklisteddomain.'\b~';
 					preg_match_all($searchword, $low_domain, $found);
 						foreach ($found[0] as $pattern) {
 							if ( get_site_option ('link_shield_blog_comments_show_link_text') == 1){
-								$text = preg_replace('|<a (.+?)'.$pattern.'(.+?)>(.+?)</a>|i', '$3', $text);
-								$text = preg_replace('|'.$pattern.'(.+?)|i', '$3', $text);
+								$text = preg_replace('/<a[^>]+?href="http:\/\/'.$pattern.'([\s\S]*?)[^>]*>([\s\S]*?)<\/a>/', '$2', $text);
 								} else {
-									$text = preg_replace('|<a (.+?)'.$pattern.'(.+?)>(.+?)</a>|i', '[' .$link_shield_text. ']', $text);
-									$text = preg_replace('|'.$pattern.'(.+?)|i', '[' .$link_shield_text. ']', $text);
+									$text = preg_replace('/<a[^>]+?href="http:\/\/'.$pattern.'([\s\S]*?)[^>]*>([\s\S]*?)<\/a>/', '[' .$link_shield_text. ']', $text);
 								}
 							//print_r($found[0]);
 						}
 					} return $text;
 	}
-	
+
 	// Hide links on bbPress
 	function link_shield_look_for_bl_domains_bbpress($text){
 		$low_domain = strtolower($text);
 		if (!get_site_option( 'link_shield_text' ) ) { $link_shield_text =  __('link blocked thanks to AEDE Spanish tax','link-shield'); } else { $link_shield_text = get_site_option( 'link_shield_text' ); }
-		
+
 			//print_r($GLOBALS['aede_domains']);
 			foreach ($GLOBALS['aede_domains'] as $blacklisteddomain) {
-				$searchword = '~\b'.'(http\:\/\/(.+?)\.|http\:\/\/)'.$blacklisteddomain.'\b~';
+				$searchword = '~\b'.$blacklisteddomain.'\b~';
 					preg_match_all($searchword, $low_domain, $found);
 						foreach ($found[0] as $pattern) {
 							if ( get_site_option ('link_shield_bbpress_show_link_text') == 1){
-								$text = preg_replace('|<a (.+?)'.$pattern.'(.+?)>(.+?)</a>|i', '$3', $text);
-								$text = preg_replace('|'.$pattern.'(.+?)|i', '$3', $text);
+								$text = preg_replace('/<a[^>]+?href="http:\/\/'.$pattern.'([\s\S]*?)[^>]*>([\s\S]*?)<\/a>/', '$2', $text);
 								} else {
-									$text = preg_replace('|<a (.+?)'.$pattern.'(.+?)>(.+?)</a>|i', '[' .$link_shield_text. ']', $text);
-									$text = preg_replace('|'.$pattern.'(.+?)|i', '[' .$link_shield_text. ']', $text);
+									$text = preg_replace('/<a[^>]+?href="http:\/\/'.$pattern.'([\s\S]*?)[^>]*>([\s\S]*?)<\/a>/', '[' .$link_shield_text. ']', $text);
 								}
-							//print_r($found[0]);
 						}
 					} return $text;
 	}
-	
+
 	// Shordcode for hide content
 	function link_shield_hide_link_shordcode( $atts , $content = null ) {
 
@@ -208,9 +201,9 @@
 		} else {
 			add_shortcode( get_site_option ('link_shield_shordcode') , 'link_shield_hide_link_shordcode' );
 			}
-	
+
 	//NOFOLLOW to comments links
-	
+
 	function link_shiled_add_nofollow_to_comments_links( $link ) {
     	return str_replace( '")\'>', '")\' rel=\'nofollow\'>', $link );
 }
