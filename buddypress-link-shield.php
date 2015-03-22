@@ -4,11 +4,11 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-add_filter('bp_get_activity_content_body', 'link_shield_look_for_bl_domains_buddypress');
-add_filter( 'bp_get_group_name', 'link_shield_look_for_bl_domains_buddypress' );
-add_filter( 'bp_get_group_description', 'link_shield_look_for_bl_domains_buddypress' );
-add_filter( 'bp_get_activities_title', 'link_shield_look_for_bl_domains_buddypress' );
-add_filter( 'bp_activity_comment_content', 'link_shield_look_for_bl_domains_buddypress' );
+add_filter(	'bp_get_activity_content_body',		'link_shield_look_for_bl_domains_buddypress'	);
+add_filter( 'bp_get_group_name',				'link_shield_look_for_bl_domains_buddypress'	);
+add_filter( 'bp_get_group_description',			'link_shield_look_for_bl_domains_buddypress'	);
+add_filter( 'bp_get_activities_title',			'link_shield_look_for_bl_domains_buddypress'	);
+add_filter( 'bp_activity_comment_content',		'link_shield_look_for_bl_domains_buddypress'	);
 
 // Hide links on BuddyPress
 	function link_shield_look_for_bl_domains_buddypress($text){

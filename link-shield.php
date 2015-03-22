@@ -25,7 +25,7 @@
 
     	//must check that the user has the required capability
 		if (!current_user_can('manage_options')){
-			wp_die( __('You do not have sufficient permissions to access this page.') );
+			wp_die( __('You do not have sufficient permissions to access this page.', 'link_shield_network_menu') );
 		}
 
     // variables for the field and option names
@@ -34,13 +34,14 @@
 
     // Read in existing option value from database
    // $opt_val = get_site_option( $link_shield_text );
-   if( isset( $_POST[ 'link_shield_text_field' ]) || isset( $_POST[ 'link_shield_shordcode_field' ]) || isset( $_POST[ 'link_shield_blog_show_link_text_field' ]) || isset( $_POST[ 'link_shield_blog_comments_show_link_text_field' ]) || isset( $_POST[ 'link_shield_buddypress_show_link_text_field' ]) || isset( $_POST[ 'link_shield_bbpress_show_link_text_field' ]) ) {
+   if( isset( $_POST[ 'link_shield_text_field' ]) || isset( $_POST[ 'link_shield_shordcode_field' ]) || isset( $_POST[ 'link_shield_blog_show_link_text_field' ]) || isset( $_POST[ 'link_shield_blog_comments_show_link_text_field' ]) || isset( $_POST[ 'link_shield_buddypress_show_link_text_field' ]) || isset( $_POST[ 'link_shield_bbpress_show_link_text_field' ]) || isset( $_POST[ 'link_shield_hidden_text_message_field' ] ) ) {
         // Read their posted value
         $opt_link_shield_text							= @$_POST[ 'link_shield_text_field' ];
         $opt_link_shield_shordcode						= @$_POST[ 'link_shield_shordcode_field' ];
         $opt_link_shield_blog_show_link_text			= @$_POST[ 'link_shield_blog_show_link_text_field' ];
         $opt_link_shield_blog_comments_show_link_text	= @$_POST[ 'link_shield_blog_comments_show_link_text_field' ];
         $opt_link_shield_bbpress_show_link_text			= @$_POST[ 'link_shield_bbpress_show_link_text_field' ];
+        $opt_link_shield_hidden_text_message			= @$_POST[ 'link_shield_hidden_text_message_field' ];
 
 		// Save the posted value in the database
         update_site_option( 'link_shield_text', $opt_link_shield_text );
@@ -49,6 +50,7 @@
         update_site_option( 'link_shield_blog_comments_show_link_text', $opt_link_shield_blog_comments_show_link_text );
         update_site_option( 'link_shield_bbpress_show_link_text', $opt_link_shield_bbpress_show_link_text );
         update_site_option(	'link_shield_add_nofollow_to_comments_links', @$_POST['link_shield_add_nofollow_to_comments_links']=='1' ? 1 : 0 );
+        update_site_option( 'link_shield_hidden_text_message', $opt_link_shield_hidden_text_message );
 
         do_action('link_shield_save_options');
 
@@ -98,7 +100,12 @@
 		<tr>
 			<th scope="row"><label><?php _e("Shordcode for hide text/links:", 'link-shield' ); ?></label></th>
 				<td><input type="text" name="link_shield_shordcode_field" class="regular-text" value="<?php echo get_site_option( 'link_shield_shordcode' ); ?>"> <code><?php if (get_site_option( 'link_shield_shordcode' ) ) { echo '['. get_site_option( 'link_shield_shordcode' ).']Text to hide[/'. get_site_option( 'link_shield_shordcode' ).']'; } else { echo '[linkshield_hide]text to hide[/linkshield_hide]'; }?></code>
-<p class="description"><?php _e('Use this Shordcode for hide links, text, text block, vides, etc to non logedin users','link-shield'); ?></p></td>
+<p class="description"><?php _e('Use this Shordcode for hide links, text, text block, vids, etc to non logedin users','link-shield'); ?></p></td>
+		</tr>
+
+		<tr>
+			<th scope="row"><label><?php _e("Text to show by the shordcode to users:", 'link-shield' ); ?></label></th>
+				<td><input type="text" name="link_shield_hidden_text_message_field" class="regular-text" value="<?php echo get_site_option( 'link_shield_hidden_text_message' ); ?>"><p class="description"><?php _e('Add the text to use when you hide text, links, text blocks, vids, etc with the shordcode','link-shield'); ?></p></td>
 		</tr>
 
 		<tr>
@@ -119,12 +126,12 @@
 <?php
 
 }
-	add_filter('the_content', 'link_shield_look_for_bl_domains');
-	add_filter('the_excerpt', 'link_shield_look_for_bl_domains');
-	add_filter('the_content_feed', 'link_shield_look_for_bl_domains_comments');
-	add_filter('comment_text', 'link_shield_look_for_bl_domains_comments');
-	add_filter('comments_number', 'link_shield_look_for_bl_domains_comments');
-	add_filter('get_comment_text', 'link_shield_look_for_bl_domains_comments');
+	add_filter('the_content', 		'link_shield_look_for_bl_domains'			);
+	add_filter('the_excerpt', 		'link_shield_look_for_bl_domains'			);
+	add_filter('the_content_feed', 	'link_shield_look_for_bl_domains_comments'	);
+	add_filter('comment_text', 		'link_shield_look_for_bl_domains_comments'	);
+	add_filter('comments_number', 	'link_shield_look_for_bl_domains_comments'	);
+	add_filter('get_comment_text', 	'link_shield_look_for_bl_domains_comments'	);
 
 	// Hide links on Blog post
 	function link_shield_look_for_bl_domains($text){
@@ -161,7 +168,6 @@
 								} else {
 									$text = preg_replace('/<a[^>]+?href="http:\/\/'.$pattern.'([\s\S]*?)[^>]*>([\s\S]*?)<\/a>/', '[' .$link_shield_text. ']', $text);
 								}
-							//print_r($found[0]);
 						}
 					} return $text;
 	}
@@ -192,9 +198,14 @@
 		if (is_user_logged_in()) {
 			return $content;
 			} else {
-				return __('You need to login for see this content','');
+				$hidentextmessage = get_site_option('link_shield_hidden_text_message');
+				if( $hidentextmessage ){
+					return $hidentextmessage;
+					}else{
+						return __('You need to login for see this content','link-shield');
+					}
 				}
-			}
+		}
 
 	if ( ! get_site_option ('link_shield_shordcode')) {
 		add_shortcode( 'linkshield_hide' , 'link_shield_hide_link_shordcode' );
