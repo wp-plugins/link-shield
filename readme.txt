@@ -64,6 +64,7 @@ Requirements/Restrictions:
 
 == Screenshots ==
 
+1. **Settings** - Lnk Shield Settings.
 
 
 == Configuration ==
